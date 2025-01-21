@@ -1,0 +1,20 @@
+# GoLabs
+
+This repository is dedicated to learning the Go programming language, exploring its features through practical examples.
+
+## Current Structure
+
+### Files
+- **`main.go`**: A basic example demonstrating the use of the `time` package for adding delays and the `fmt` package for printing messages to the console.
+
+### Summary
+The `main.go` file currently performs:
+1. A 1-second delay using `time.Sleep`.
+2. Printing a simple message to the console.
+
+## How to Run
+
+1. Ensure you have Go installed on your machine (version 1.23 or higher).
+2. Initialize the module if not already done:
+   ```bash
+   go mod init GoLabs
