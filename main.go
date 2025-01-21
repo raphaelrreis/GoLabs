@@ -19,5 +19,5 @@ func main() {
 
 	// Ensure the main function waits before exiting to allow goroutines to finish
 	time.Sleep(1 * time.Second)
-	fmt.Println("Common Callback") // Final message printed after goroutines start
+	fmt.Println("Common Callback")
 }
