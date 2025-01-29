@@ -2,22 +2,22 @@ package main
 
 import (
 	"fmt"
-	"github.com/google/uuid"
-	"github.com/raphaelreis/goLabs/internal/api"
-	"github.com/raphaelreis/goLabs/internal/utils"
+	"log"
+
+	"github.com/raphaelreis/goLabs/internal/db"
+	"github.com/raphaelreis/goLabs/internal/server"
 )
 
 func main() {
-	fmt.Println("Hello, World!")
+	fmt.Println("Starting GoLabs API...")
 
-	// Teste de UUID
-	id := uuid.New()
-	fmt.Println("Generated UUID:", id)
+	err := db.ConnectDatabase()
+	if err != nil {
+		log.Fatalf("Failed to connect to database: %v", err)
+	}
 
-	// Chamar função do pacote interno
-	utils.PrintMessage("Executando projeto robusto com Go!")
-
-	// Iniciar servidor HTTP
-	r := api.SetupRouter()
-	r.Run(":8080")
+	err = server.StartServer()
+	if err != nil {
+		log.Fatalf("Error starting server: %v", err)
+	}
 }

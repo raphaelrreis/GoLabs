@@ -6,10 +6,10 @@ import (
 )
 
 func HomeHandler(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"message": "Bem Vindo ao GoLabs API!"})
+	c.JSON(http.StatusOK, gin.H{"message": "Welcome to GoLabs API!"})
 }
 
 func GetUsers(c *gin.Context) {
-	users := []string{"Raphael", "Raphael123", "Pati"}
+	users := []string{"Alice", "Bob", "Charlie"}
 	c.JSON(http.StatusOK, gin.H{"users": users})
 }

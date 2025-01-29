@@ -5,9 +5,7 @@ import (
 	"github.com/raphaelreis/goLabs/internal/api/handlers"
 )
 
-func SetupRouter() *gin.Engine {
-	r := gin.Default()
+func SetupRouter(r *gin.Engine) {
 	r.GET("/", handlers.HomeHandler)
 	r.GET("/users", handlers.GetUsers)
-	return r
 }
