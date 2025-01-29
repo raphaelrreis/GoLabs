@@ -1,20 +1,87 @@
-# GoLabs
+# GoLabs API Documentation 🚀
 
-This repository is dedicated to learning the Go programming language, exploring its features through practical examples.
+## 📂 Project Structure
 
-## Current Structure
+- `cmd/` - Main entry point of the project
+- `internal/api/` - API handlers
+- `internal/db/` - Database connection
+- `internal/models/` - Data models
+- `internal/services/` - Business logic
+- `pkg/logger/` - Centralized logger
+- `tests/` - Automated tests
+- `docker/` - Docker-related files (`Dockerfile`, `docker-compose.yml`)
 
-### Files
-- **`main.go`**: A basic example demonstrating the use of the `time` package for adding delays and the `fmt` package for printing messages to the console.
+## 🛠️ Technologies Used
 
-### Summary
-The `main.go` file currently performs:
-1. A 1-second delay using `time.Sleep`.
-2. Printing a simple message to the console.
+- **Golang 1.23.5**
+- **Gin Framework** - HTTP web framework
+- **GORM (PostgreSQL)** - ORM for database management
+- **Docker & Docker Compose** - For containerization
+- **Kubernetes** - Optional for deployment orchestration
 
-## How to Run
+## 🚀 How to Run the Project
 
-1. Ensure you have Go installed on your machine (version 1.23 or higher).
-2. Initialize the module if not already done:
-   ```bash
-   go mod init GoLabs
+### Prerequisites
+Ensure you have the following installed:
+
+- **Go**: [Install Golang](https://golang.org/dl/)
+- **Docker & Docker Compose**: [Install Docker](https://docs.docker.com/get-docker/)
+- **PostgreSQL**: Included in Docker, but can also be installed manually.
+
+### Clone and Build
+```bash
+git clone https://github.com/raphaelreis/GoLabs.git
+cd GoLabs
+go mod tidy
+go build -o bin/golabs cmd/main.go
+```
+
+## 🔧 Running the API
+
+### Running with Docker
+To run the API and database in containers:
+```bash
+docker-compose up -d
+```
+This will start:
+- PostgreSQL (`mydb`)
+- GoLabs API (`golabs_api`)
+
+### Running without Docker
+If running locally without containers:
+1. Ensure PostgreSQL is installed and running.
+2. Set up the database manually:
+```bash
+psql -U postgres -d mydb -c "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name VARCHAR(100), email VARCHAR(150) UNIQUE NOT NULL);"
+```
+3. Start the API:
+```bash
+./bin/golabs
+```
+The API will be available at [http://localhost:8080](http://localhost:8080).
+
+## 📡 Testing API Requests
+
+### 1️⃣ Using cURL
+```bash
+curl -X GET http://localhost:8080/
+curl -X GET http://localhost:8080/users
+```
+
+### 2️⃣ Running Automated Tests
+```bash
+go test ./tests/...
+```
+
+### 3️⃣ Running SQL Scripts in Docker
+To run database commands inside the container:
+```bash
+docker exec -it golabs_db psql -U postgres -d mydb -c "SELECT * FROM users;"
+```
+
+## 📝 Additional Notes
+- Use `GIN_MODE=release` for production mode.
+- Check logs under `pkg/logger/` for debugging.
+- Modify `init-db.sh` to automate database setup on container startup.
+
+This documentation ensures a structured approach to setting up, running, and testing your GoLabs API.
