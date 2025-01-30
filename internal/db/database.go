@@ -16,7 +16,7 @@ func ConnectDatabase() error {
 		getEnv("DB_HOST", "localhost"),
 		getEnv("DB_USER", "postgres"),
 		getEnv("DB_PASSWORD", "secret"),
-		getEnv("DB_NAME", "mydb"),
+		getEnv("DB_NAME", "golabs"),
 		getEnv("DB_PORT", "5432"),
 	)
 
