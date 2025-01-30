@@ -13,7 +13,7 @@
 
 ## 🛠️ Technologies Used
 
-- **Golang 1.23.5**
+- **Golang 1.21**
 - **Gin Framework** - HTTP web framework
 - **GORM (PostgreSQL)** - ORM for database management
 - **Docker & Docker Compose** - For containerization
