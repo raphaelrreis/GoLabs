@@ -12,7 +12,8 @@ import (
 
 func TestHomeHandler(t *testing.T) {
 	gin.SetMode(gin.TestMode)
-	router := api.SetupRouter()
+	router := gin.Default()
+	api.SetupRouter(router)
 
 	req, _ := http.NewRequest("GET", "/", nil)
 	w := httptest.NewRecorder()
@@ -23,7 +24,8 @@ func TestHomeHandler(t *testing.T) {
 
 func TestGetUsersHandler(t *testing.T) {
 	gin.SetMode(gin.TestMode)
-	router := api.SetupRouter()
+	router := gin.Default()
+	api.SetupRouter(router)
 
 	req, _ := http.NewRequest("GET", "/users", nil)
 	w := httptest.NewRecorder()
