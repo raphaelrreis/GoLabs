@@ -1,8 +1,6 @@
 module github.com/raphaelreis/goLabs
 
-go 1.22
-
-toolchain go1.22.11
+go 1.21
 
 require (
 	github.com/gin-gonic/gin v1.10.0
